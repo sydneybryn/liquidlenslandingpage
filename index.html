@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Liquid Lens — a camera that bends light</title>
-<meta name="description" content="Liquid Lens is an iPhone camera app with 20+ real-time lens effects — chromatic aberration, halation, warp, oil slick, gradient maps and more — rendered live on the viewfinder." />
+<title>Liquid Lens: iOS Camera App</title>
+<meta name="description" content="Liquid Lens is an iPhone camera app with 20+ real-time lens effects, including chromatic aberration, halation, warp, oil slick, and gradient maps, rendered live on the viewfinder." />
 <link rel="icon" href="assets/icon.png" />
 <link rel="apple-touch-icon" href="assets/icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 <link rel="stylesheet" href="styles.css" />
 </head>
@@ -34,108 +34,89 @@
 <header class="hero" id="top">
   <div class="wrap hero-grid">
     <div>
+      <img class="hero-icon" src="assets/icon.png" alt="Liquid Lens app icon" />
       <p class="eyebrow">iOS Camera App</p>
-      <h1>Shoot photos <span class="grad">through liquid glass.</span></h1>
+      <h1>Shoot Photos Through a <span class="grad">Liquid Lens</span></h1>
       <p class="lede">
-        Liquid Lens is a camera with 20+ real-time effects built in — chromatic
-        aberration, halation, warp, oil slick, gradient maps and more — all
-        rendered live on the viewfinder, so what you see is what you shoot.
+        Liquid Lens is a camera with 20+ real-time effects built in:
+        chromatic aberration, halation, warp, oil slick, gradient maps,
+        and more, all rendered live on the viewfinder, so what you see
+        is what you shoot.
       </p>
       <div class="cta-row">
         <!-- TODO once live: replace with <a class="btn btn-primary" href="[App Store URL]">Download on the App Store</a> -->
         <span class="badge"><span class="dot"></span> Coming soon to the App Store</span>
         <a class="btn btn-ghost" href="#effects">See the effects ↓</a>
       </div>
-      <p class="hero-note">No accounts. No ads. No data collected — ever.</p>
+      <p class="hero-note">No accounts. No ads. No data ever collected.</p>
     </div>
 
     <div class="phone-stage">
       <div class="phone-glow"></div>
       <div class="phone">
-        <div class="phone-screen" id="phoneScreen">
+        <div class="phone-screen">
           <div class="island"></div>
 
-          <div class="preview-frame" id="previewFrame">
+          <div class="preview-frame">
             <div class="photo-layer" id="photoLayer">
-              <img src="assets/photos/sample-1.jpg" class="active" alt="Sample photo 1 — Lightner Museum, St. Augustine" />
-              <img src="assets/photos/sample-2.jpg" alt="Sample photo 2 — golden hour clouds" />
-              <img src="assets/photos/sample-3.jpg" alt="Sample photo 3 — looking up at a building facade" />
+              <img src="assets/photos/showcase-1.jpg" class="active" alt="Photo shot with Liquid Lens: chromatic aberration and warp on a car wash bay" />
+              <img src="assets/photos/showcase-2.jpg" alt="Photo shot with Liquid Lens: roadside ice cream sign with a glitch color effect" />
+              <img src="assets/photos/showcase-3.jpg" alt="Photo shot with Liquid Lens: white fence path under a pink sunset sky" />
+              <img src="assets/photos/showcase-4.jpg" alt="Photo shot with Liquid Lens: night city street with chromatic aberration" />
+              <img src="assets/photos/showcase-5.jpg" alt="Photo shot with Liquid Lens: fisheye warp on a tree against a purple sky" />
+              <img src="assets/photos/showcase-6.jpg" alt="Photo shot with Liquid Lens: tree silhouette against an orange sunset" />
+              <img src="assets/photos/showcase-7.jpg" alt="Photo shot with Liquid Lens: abstract light burst effect" />
+              <img src="assets/photos/showcase-8.jpg" alt="Photo shot with Liquid Lens: neon-lit window blinds" />
+              <img src="assets/photos/showcase-9.jpg" alt="Photo shot with Liquid Lens: liquid marble color abstraction" />
             </div>
-            <div class="grain-overlay" id="grainOverlay"></div>
-            <div class="oil-overlay" id="oilOverlay"></div>
-            <div class="grid-overlay" id="gridOverlay"></div>
-            <div class="warp-vignette" id="warpVignette"></div>
           </div>
-          <div class="capture-flash" id="captureFlash"></div>
 
-          <!-- top bar: reset · aspect ratio (or REC) · flip camera -->
+          <button class="photo-arrow prev" id="prevPhoto" aria-label="Previous photo">‹</button>
+          <button class="photo-arrow next" id="nextPhoto" aria-label="Next photo">›</button>
+
+          <!-- top bar: reset, aspect ratio, flip camera (decorative, matches the real app's UI) -->
           <div class="ui-top-bar">
-            <button class="ui-icon-btn" id="resetBtn" aria-label="Reset effects"><i class="bi bi-arrow-counterclockwise"></i></button>
-            <button class="aspect-bracket" id="aspectBtn" aria-label="Cycle aspect ratio">
-              <span class="bracket left"></span><span id="aspectLabel">5:7</span><span class="bracket right"></span>
-            </button>
-            <div class="rec-indicator" id="recIndicator" hidden><span class="rec-dot"></span>REC</div>
-            <button class="ui-icon-btn" id="flipBtn" aria-label="Flip camera"><i class="bi bi-arrow-repeat"></i></button>
+            <span class="ui-icon-btn"><i class="bi bi-arrow-counterclockwise"></i></span>
+            <span class="aspect-bracket">
+              <span class="bracket left"></span><span>5:7</span><span class="bracket right"></span>
+            </span>
+            <span class="ui-icon-btn"><i class="bi bi-arrow-repeat"></i></span>
           </div>
 
-          <!-- bottom deck: flash / fx / shutter / warp / colors, then thumbnail / mode / lens -->
+          <!-- bottom deck: flash / fx / shutter / warp / colors, then thumbnail / mode / lens (decorative) -->
           <div class="ui-bottom-deck">
             <div class="deck-row deck-row-main">
-              <button class="tool-square" id="flashBtn" aria-label="Flash">
+              <span class="tool-square">
                 <span class="tool-icon"><i class="bi bi-lightning-charge"></i></span>
                 <span class="tool-label">Flash</span>
-              </button>
-              <button class="tool-square" id="fxBtn" aria-label="FX effects">
+              </span>
+              <span class="tool-square">
                 <span class="tool-icon"><i class="bi bi-stars"></i></span>
                 <span class="tool-label">FX</span>
-              </button>
-              <button class="shutter-btn" id="shutterBtn" aria-label="Capture">
-                <span class="shutter-ring"><span class="shutter-inner" id="shutterInner"></span></span>
-              </button>
-              <button class="tool-square" id="warpBtn" aria-label="Warp">
+              </span>
+              <span class="shutter-ring"><span class="shutter-inner"></span></span>
+              <span class="tool-square">
                 <span class="tool-icon"><i class="bi bi-arrows-angle-expand"></i></span>
-                <span class="tool-label" id="warpLabel">Warp</span>
-              </button>
-              <button class="tool-square" id="colorsBtn" aria-label="Color effects">
+                <span class="tool-label">Warp</span>
+              </span>
+              <span class="tool-square">
                 <span class="tool-icon rgb-mark-wrap">
                   <span class="rgb-mark" aria-hidden="true">
                     <span class="dot r"></span><span class="dot b"></span><span class="dot g"></span>
                   </span>
                 </span>
                 <span class="tool-label">Colors</span>
-              </button>
+              </span>
             </div>
             <div class="deck-row deck-row-lower">
-              <button class="thumb-btn" id="thumbBtn" disabled aria-label="Last capture"><i class="bi bi-image"></i></button>
+              <span class="thumb-btn"><i class="bi bi-image"></i></span>
               <div class="mode-labels">
-                <button class="mode-label active" id="photoModeBtn">PHOTO</button>
-                <button class="mode-label" id="videoModeBtn">VIDEO</button>
-                <span class="edit-wrap">
-                  <button class="mode-label edit-label" id="editModeBtn">EDIT</button>
-                  <span class="edit-tooltip" id="editTooltip">Opens your Photos library</span>
-                </span>
+                <span class="mode-label active">PHOTO</span>
+                <span class="mode-label">VIDEO</span>
+                <span class="mode-label">EDIT</span>
               </div>
-              <button class="lens-btn" id="lensBtn">1×</button>
+              <span class="lens-btn">1×</span>
             </div>
-          </div>
-
-          <!-- effects drawer: header (name / reset / done) → slider → tile row -->
-          <div class="effects-drawer" id="effectsDrawer" hidden>
-            <div class="drawer-handle"></div>
-            <div class="drawer-header">
-              <span class="drawer-effect-name" id="drawerEffectName">CA</span>
-              <div class="drawer-header-btns">
-                <button class="drawer-icon-btn" id="drawerResetBtn" aria-label="Reset this effect"><i class="bi bi-arrow-counterclockwise"></i></button>
-                <button class="drawer-icon-btn" id="drawerDoneBtn" aria-label="Close drawer"><i class="bi bi-check-lg"></i></button>
-              </div>
-            </div>
-            <div class="drawer-slider-row">
-              <button class="drawer-mini-btn" id="gridToggleBtn" hidden aria-label="Toggle mesh grid"><i class="bi bi-grid-3x3"></i></button>
-              <button class="drawer-palette-btn" id="paletteBtn" hidden>Sunset</button>
-              <input type="range" id="effectSlider" min="0" max="100" value="0" aria-label="Effect intensity" />
-              <span class="drawer-value" id="drawerValue">0</span>
-            </div>
-            <div class="drawer-tiles" id="drawerTiles"></div>
           </div>
         </div>
       </div>
@@ -148,11 +129,10 @@
     <div class="section-head">
       <h2>This is the actual app UI</h2>
       <p>
-        Reset · aspect ratio · flip camera up top. Flash, FX, shutter, Warp,
-        and Colors on the deck. Tap FX or Colors to open the drawer, tap a
-        tile to select it, then drag the slider to bring it in — exactly how
-        it works on your phone. Effect looks are approximated with CSS here;
-        the real app renders them live with custom Metal shaders.
+        Reset, aspect ratio, and flip camera up top. Flash, FX, Shutter,
+        Warp, and Colors on the deck, just like the real app. Use the
+        arrows on the photo to browse real shots, each made with a
+        different combination of these effects.
       </p>
     </div>
     <div class="effects-list">
@@ -181,31 +161,11 @@
   </div>
 </section>
 
-<section id="showcase">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Shot with Liquid Lens</h2>
-      <p>Real output from the app — no CSS approximation here, this is what actually comes out the other end.</p>
-    </div>
-    <div class="showcase-strip">
-      <img src="assets/photos/showcase-1.jpg" alt="Liquid Lens sample: chromatic aberration and warp on a car wash bay" loading="lazy" />
-      <img src="assets/photos/showcase-2.jpg" alt="Liquid Lens sample: roadside ice cream sign, glitch color effect" loading="lazy" />
-      <img src="assets/photos/showcase-3.jpg" alt="Liquid Lens sample: white fence path under a pink sunset sky" loading="lazy" />
-      <img src="assets/photos/showcase-4.jpg" alt="Liquid Lens sample: night city street with chromatic aberration" loading="lazy" />
-      <img src="assets/photos/showcase-5.jpg" alt="Liquid Lens sample: fisheye warp on a tree, purple sky" loading="lazy" />
-      <img src="assets/photos/showcase-6.jpg" alt="Liquid Lens sample: tree silhouette against an orange sunset" loading="lazy" />
-      <img src="assets/photos/showcase-7.jpg" alt="Liquid Lens sample: abstract light burst effect" loading="lazy" />
-      <img src="assets/photos/showcase-8.jpg" alt="Liquid Lens sample: neon-lit window blinds" loading="lazy" />
-      <img src="assets/photos/showcase-9.jpg" alt="Liquid Lens sample: liquid marble color abstraction" loading="lazy" />
-    </div>
-  </div>
-</section>
-
 <section id="features">
   <div class="wrap">
     <div class="section-head">
       <h2>Built for shooting, not scrolling through menus</h2>
-      <p>Every effect renders live in the viewfinder at full frame rate, so you compose the shot you actually want — no guessing how a filter will look after the fact.</p>
+      <p>Every effect renders live in the viewfinder at full frame rate, so you compose the shot you actually want, without guessing how a filter will look after the fact.</p>
     </div>
     <div class="grid-features">
       <div class="card">
@@ -216,7 +176,7 @@
       <div class="card">
         <div class="icon">▣</div>
         <h3>Full-resolution capture</h3>
-        <p>Photos capture at up to 48MP. Video records with effects baked in — no separate export step.</p>
+        <p>Photos capture at up to 48MP. Video records with effects baked in, no separate export step needed.</p>
       </div>
       <div class="card">
         <div class="icon">✎</div>
@@ -226,7 +186,7 @@
       <div class="card">
         <div class="icon">◈</div>
         <h3>Stack and tune</h3>
-        <p>Layer multiple effects together and dial each one in with a slider — from a whisper to fully liquid.</p>
+        <p>Layer multiple effects together and dial each one in with a slider, from a whisper to fully liquid.</p>
       </div>
       <div class="card">
         <div class="icon">⬒</div>
@@ -249,8 +209,8 @@
         <h2>Private by design</h2>
         <p>
           Liquid Lens doesn't have a server, an account system, or an
-          analytics SDK — so there's nothing to send your photos to. Everything
-          happens on your device.
+          analytics SDK, so there's nothing to send your photos to.
+          Everything happens on your device.
         </p>
         <a class="btn btn-primary" href="privacy.html">Read the full privacy policy</a>
       </div>

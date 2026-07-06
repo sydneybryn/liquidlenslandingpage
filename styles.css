@@ -1,23 +1,25 @@
-/* Liquid Lens landing page — shared styles */
+/* Liquid Lens landing page: shared styles */
 
 :root {
-  --bg: #07080d;
-  --bg-soft: #0d0f18;
+  --bg: #12003d;
+  --bg-soft: #170047;
   --panel: rgba(255, 255, 255, 0.05);
   --panel-border: rgba(255, 255, 255, 0.09);
-  --text: #eef0f6;
-  --text-dim: #a6acc0;
-  --text-dimmer: #6d7288;
-  --accent-a: #46e0c9;   /* liquid teal  */
-  --accent-b: #6ee66b;   /* icon green   */
-  --accent-c: #7c5cff;   /* violet       */
-  --accent-d: #2a6bff;   /* deep blue    */
+  --text: #f4f1ff;
+  --text-dim: #bbd8f1;
+  --text-dimmer: rgba(187, 216, 241, 0.55);
+  --accent-a: #95cc66;   /* primary accent (green)         */
+  --accent-b: #95cc66;   /* primary accent, alias          */
+  --accent-c: #2300d3;   /* additional accent (blue-violet) */
+  --accent-d: #2300d3;   /* additional accent, alias        */
   --radius-lg: 28px;
   --radius-md: 18px;
   --radius-sm: 12px;
   --max-w: 1120px;
 
-  /* Design tokens lifted from the real app's `enum DC` in ContentView.swift */
+  /* Design tokens lifted from the real app's `enum DC` in ContentView.swift.
+     These describe the app's own UI, not the marketing site, so they stay
+     separate from the brand palette above. */
   --dc-accent: #ffc93c;
   --dc-chrome: #0b0b0b;
   --dc-line: rgba(255, 255, 255, 0.16);
@@ -36,11 +38,11 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background:
-    radial-gradient(1200px 600px at 15% -10%, rgba(70, 224, 201, 0.16), transparent 60%),
-    radial-gradient(1000px 700px at 110% 10%, rgba(124, 92, 255, 0.16), transparent 55%),
+    radial-gradient(1200px 600px at 15% -10%, rgba(149, 204, 102, 0.16), transparent 60%),
+    radial-gradient(1000px 700px at 110% 10%, rgba(35, 0, 211, 0.22), transparent 55%),
     var(--bg);
   color: var(--text);
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: "Spline Sans Mono", "SF Mono", "Menlo", ui-monospace, monospace;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -144,7 +146,7 @@ a { color: inherit; }
 
 .btn-primary {
   background: linear-gradient(135deg, var(--accent-a), var(--accent-d));
-  color: #05130f;
+  color: #ffffff;
 }
 
 .btn-ghost {
@@ -164,6 +166,14 @@ a { color: inherit; }
   grid-template-columns: 1.05fr 0.95fr;
   gap: 56px;
   align-items: center;
+}
+
+.hero-icon {
+  width: 96px;
+  height: 96px;
+  display: block;
+  margin: 0 0 24px;
+  filter: drop-shadow(0 18px 30px rgba(35, 0, 211, 0.45));
 }
 
 .eyebrow {
@@ -209,7 +219,11 @@ h1 .grad {
   color: var(--text-dimmer);
 }
 
-/* ---------- Phone mockup ---------- */
+/* ---------- Phone mockup ----------
+   A static recreation of the real app's UI (see ContentView.swift): the
+   chrome (top bar, tool squares, bottom deck) is non-interactive artwork,
+   not a working control panel. Only the two arrows beside the photo are
+   real controls, and they browse real photos shot with the app. */
 
 .phone-stage {
   position: relative;
@@ -221,7 +235,7 @@ h1 .grad {
 .phone-glow {
   position: absolute;
   inset: -50px;
-  background: radial-gradient(closest-side, rgba(70, 224, 201, 0.25), transparent 70%);
+  background: radial-gradient(closest-side, rgba(149, 204, 102, 0.28), transparent 70%);
   filter: blur(12px);
   z-index: 0;
 }
@@ -286,7 +300,6 @@ h1 .grad {
   flex: 0 0 auto;
   width: 100%;
   aspect-ratio: 5 / 7;
-  transition: transform 0.42s cubic-bezier(0.34, 0.85, 0.4, 1);
   overflow: hidden;
 }
 
@@ -299,65 +312,34 @@ h1 .grad {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: filter 0.2s ease;
+  transition: opacity 0.4s ease;
 }
 
 .photo-layer img.active { opacity: 1; }
 
-.grain-overlay,
-.oil-overlay,
-.grid-overlay,
-.warp-vignette {
+.photo-arrow {
   position: absolute;
-  inset: 0;
-  opacity: 0;
-  pointer-events: none;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
-.grain-overlay {
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  background-size: 160px 160px;
-}
+.photo-arrow.prev { left: 10px; }
+.photo-arrow.next { right: 10px; }
 
-.oil-overlay {
-  mix-blend-mode: color-dodge;
-  background: conic-gradient(from 0deg, #ff5cf1, #6ee66b, #46e0c9, #7c5cff, #ff5cf1);
-  animation: spin 9s linear infinite;
-}
-
-@keyframes spin { to { transform: rotate(360deg); } }
-
-.grid-overlay {
-  mix-blend-mode: screen;
-  background-image:
-    repeating-linear-gradient(0deg, rgba(46,255,158,0.5) 0 1px, transparent 1px 34px),
-    repeating-linear-gradient(90deg, rgba(46,255,158,0.5) 0 1px, transparent 1px 34px);
-}
-
-.warp-vignette {
-  background: radial-gradient(circle at 50% 46%, transparent 30%, rgba(0,0,0,0.85) 96%);
-}
-
-.capture-flash {
-  position: absolute;
-  inset: 0;
-  z-index: 8;
-  background: #fff;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.capture-flash.flash {
-  animation: captureFlash 0.22s ease-out;
-}
-
-@keyframes captureFlash {
-  0% { opacity: 0.9; }
-  100% { opacity: 0; }
-}
-
-/* -- top bar: reset · aspect bracket (or REC) · flip -- */
+/* -- top bar: reset · aspect bracket · flip (decorative) -- */
 
 .ui-top-bar {
   position: absolute;
@@ -375,33 +357,22 @@ h1 .grad {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: none;
-  background: transparent;
   color: #fff;
   font-size: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 }
-
-.ui-icon-btn.accent { color: var(--dc-accent); }
-
-#flipBtn.spin i { animation: flipSpin 0.38s ease; }
-@keyframes flipSpin { to { transform: rotate(180deg); } }
 
 .aspect-bracket {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: transparent;
-  border: none;
   color: #fff;
   font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 0.02em;
   padding: 6px 0;
-  cursor: pointer;
 }
 
 .aspect-bracket .bracket {
@@ -413,24 +384,7 @@ h1 .grad {
 .aspect-bracket .bracket.left { border-right: none; }
 .aspect-bracket .bracket.right { border-left: none; }
 
-.rec-indicator {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #ff453a;
-}
-
-.rec-indicator .rec-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #ff453a;
-}
-
-/* -- bottom deck -- */
+/* -- bottom deck (decorative) -- */
 
 .ui-bottom-deck {
   position: absolute;
@@ -453,10 +407,6 @@ h1 .grad {
   flex-direction: column;
   align-items: center;
   gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
 }
 
 .tool-square .tool-icon {
@@ -479,15 +429,6 @@ h1 .grad {
   text-transform: uppercase;
   color: var(--dc-muted);
 }
-
-.tool-square.active .tool-icon {
-  border-color: var(--dc-accent);
-  color: var(--dc-accent);
-}
-
-.tool-square.active .tool-label { color: var(--dc-accent); }
-
-.tool-square:disabled { opacity: 0.4; cursor: default; }
 
 .rgb-mark-wrap {
   background: transparent;
@@ -512,13 +453,6 @@ h1 .grad {
 .rgb-mark .dot.b { background: #2e6bff; top: 2px; right: 2px; }
 .rgb-mark .dot.g { background: #1fc871; bottom: 0; left: 50%; transform: translateX(-50%); }
 
-.shutter-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
 .shutter-ring {
   display: flex;
   align-items: center;
@@ -527,33 +461,14 @@ h1 .grad {
   height: 66px;
   border-radius: 50%;
   border: 3px solid #fff;
-  transition: border-color 0.15s ease;
 }
-
-.shutter-btn.recording .shutter-ring { border-color: #ff453a; }
 
 .shutter-inner {
   width: 54px;
   height: 54px;
   border-radius: 50%;
   background: #fff;
-  transition: all 0.18s ease;
 }
-
-.shutter-inner.video-mode {
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  background: #ff453a;
-}
-
-.shutter-btn.recording .shutter-inner.video-mode {
-  width: 22px;
-  height: 22px;
-  border-radius: 5px;
-}
-
-.shutter-btn.pressed .shutter-ring { transform: scale(0.85); }
 
 .deck-row-lower {
   justify-content: space-between;
@@ -564,19 +479,14 @@ h1 .grad {
   width: 46px;
   height: 46px;
   border-radius: 12px;
-  border: 1.4px solid rgba(255,255,255,0.5);
-  background-color: rgba(255,255,255,0.06);
-  background-size: cover;
-  background-position: center;
+  border: 1.4px solid rgba(255, 255, 255, 0.28);
+  background-color: rgba(255, 255, 255, 0.06);
   color: var(--dc-faint);
   font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 }
-
-.thumb-btn:disabled { opacity: 0.5; cursor: default; }
 
 .mode-labels {
   display: flex;
@@ -585,201 +495,26 @@ h1 .grad {
 }
 
 .mode-label {
-  background: none;
-  border: none;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.06em;
   color: var(--dc-faint);
-  cursor: pointer;
-  padding: 4px 0;
 }
 
 .mode-label.active { color: var(--dc-accent); }
-
-.edit-wrap { position: relative; }
-
-.edit-tooltip {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-6px);
-  background: rgba(20,20,20,0.95);
-  border: 1px solid var(--dc-line);
-  color: #fff;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: normal;
-  text-transform: none;
-  white-space: nowrap;
-  padding: 6px 10px;
-  border-radius: 8px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.15s ease;
-}
-
-.edit-tooltip.show { opacity: 1; }
 
 .lens-btn {
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  border: none;
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.06);
   color: #fff;
   font-size: 12px;
   font-weight: 700;
-  cursor: pointer;
-}
-
-.lens-btn.faint { color: var(--dc-faint); }
-
-/* -- effects drawer -- */
-
-.effects-drawer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 7;
-  background: #111214;
-  border-radius: 20px 20px 0 0;
-  padding-bottom: 18px;
-}
-
-.drawer-handle {
-  width: 34px;
-  height: 4px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.22);
-  margin: 9px auto 5px;
-}
-
-.drawer-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 16px 4px;
-}
-
-.drawer-effect-name { font-size: 12.5px; font-weight: 700; }
-
-.drawer-header-btns { display: flex; gap: 6px; }
-
-.drawer-icon-btn {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255,255,255,0.07);
-  color: var(--dc-muted);
-  font-size: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 }
-
-.drawer-slider-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 4px 16px 0;
-}
-
-.drawer-mini-btn {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255,255,255,0.07);
-  color: var(--dc-muted);
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  flex: 0 0 auto;
-}
-
-.drawer-mini-btn.on { background: rgba(255,255,255,0.14); }
-
-.drawer-palette-btn {
-  flex: 0 0 auto;
-  height: 26px;
-  padding: 0 10px;
-  border-radius: 999px;
-  border: none;
-  background: rgba(255,255,255,0.1);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  cursor: pointer;
-}
-
-#effectSlider {
-  flex: 1;
-  height: 3px;
-  accent-color: var(--dc-accent);
-}
-
-.drawer-value {
-  width: 26px;
-  text-align: right;
-  font-size: 12px;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-}
-
-.drawer-tiles {
-  display: flex;
-  gap: 7px;
-  overflow-x: auto;
-  padding: 12px 16px 0;
-  scrollbar-width: none;
-}
-
-.drawer-tiles::-webkit-scrollbar { display: none; }
-
-.effect-tile {
-  flex: 0 0 auto;
-  width: 52px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-.effect-tile-icon {
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
-  border: 1.4px solid var(--dc-line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  color: #fff;
-}
-
-.effect-tile-label {
-  font-size: 8.5px;
-  color: var(--dc-muted);
-  white-space: nowrap;
-}
-
-.effect-tile.on .effect-tile-icon {
-  background: var(--tint);
-  border-color: transparent;
-  color: #000;
-}
-
-.effect-tile.on .effect-tile-label { color: #fff; }
 
 /* ---------- Feature sections ---------- */
 
@@ -825,7 +560,7 @@ section { padding: 84px 0; }
   justify-content: center;
   margin-bottom: 16px;
   font-size: 19px;
-  background: linear-gradient(135deg, rgba(70, 224, 201, 0.22), rgba(124, 92, 255, 0.22));
+  background: linear-gradient(135deg, rgba(149, 204, 102, 0.22), rgba(35, 0, 211, 0.22));
   border: 1px solid var(--panel-border);
 }
 
@@ -857,32 +592,12 @@ section { padding: 84px 0; }
   color: var(--text-dim);
 }
 
-/* ---------- Showcase strip (real app output) ---------- */
-
-.showcase-strip {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  padding: 4px 4px 12px;
-  scroll-snap-type: x proximity;
-}
-
-.showcase-strip img {
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-  height: 340px;
-  width: auto;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--panel-border);
-  object-fit: cover;
-}
-
 /* ---------- Privacy summary strip ---------- */
 
 .privacy-strip {
   border-radius: var(--radius-lg);
   border: 1px solid var(--panel-border);
-  background: linear-gradient(135deg, rgba(70, 224, 201, 0.08), rgba(124, 92, 255, 0.08));
+  background: linear-gradient(135deg, rgba(149, 204, 102, 0.1), rgba(35, 0, 211, 0.12));
   padding: 40px;
   display: grid;
   grid-template-columns: 1.2fr 1fr;
