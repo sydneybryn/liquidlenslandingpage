@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Liquid Lens — a camera that bends light</title>
+<meta name="description" content="Liquid Lens is an iPhone camera app with 20+ real-time lens effects — chromatic aberration, halation, warp, oil slick, gradient maps and more — rendered live on the viewfinder." />
+<link rel="icon" href="assets/icon.png" />
+<link rel="apple-touch-icon" href="assets/icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <img src="assets/icon.png" alt="Liquid Lens icon" />
+      Liquid Lens
+    </a>
+    <div class="nav-links">
+      <a href="#effects">Effects</a>
+      <a href="#features">Features</a>
+      <a href="#privacy">Privacy</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+    <span class="badge"><span class="dot"></span> Coming soon to the App Store</span>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">iOS Camera App</p>
+      <h1>Shoot photos <span class="grad">through liquid glass.</span></h1>
+      <p class="lede">
+        Liquid Lens is a camera with 20+ real-time effects built in — chromatic
+        aberration, halation, warp, oil slick, gradient maps and more — all
+        rendered live on the viewfinder, so what you see is what you shoot.
+      </p>
+      <div class="cta-row">
+        <!-- TODO once live: replace with <a class="btn btn-primary" href="[App Store URL]">Download on the App Store</a> -->
+        <span class="badge"><span class="dot"></span> Coming soon to the App Store</span>
+        <a class="btn btn-ghost" href="#effects">See the effects ↓</a>
+      </div>
+      <p class="hero-note">No accounts. No ads. No data collected — ever.</p>
+    </div>
+
+    <div class="phone-stage">
+      <div class="phone-glow"></div>
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="island"></div>
+
+          <div class="photo-layer" id="photoLayer">
+            <img src="assets/photos/sample-1.jpg" class="active" alt="Sample photo 1 — Lightner Museum, St. Augustine" />
+            <img src="assets/photos/sample-2.jpg" alt="Sample photo 2 — golden hour clouds" />
+            <img src="assets/photos/sample-3.jpg" alt="Sample photo 3 — looking up at a building facade" />
+          </div>
+          <div class="grain-overlay" id="grainOverlay"></div>
+          <div class="oil-overlay" id="oilOverlay"></div>
+
+          <div class="top-bar">
+            <span class="chip">1×</span>
+            <span class="chip">4:5</span>
+          </div>
+
+          <div class="dots" id="dots">
+            <button class="active" data-photo="0" aria-label="Sample photo 1"></button>
+            <button data-photo="1" aria-label="Sample photo 2"></button>
+            <button data-photo="2" aria-label="Sample photo 3"></button>
+          </div>
+
+          <button class="nav-arrow prev" id="prevPhoto" aria-label="Previous sample photo">‹</button>
+          <button class="nav-arrow next" id="nextPhoto" aria-label="Next sample photo">›</button>
+
+          <div class="bottom-bar">
+            <p class="effect-label" id="effectLabel">Original <span>— tap an effect below</span></p>
+            <div class="chip-row" id="chipRow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="effects">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>One tap, a whole new roll of film</h2>
+      <p>Tap through the phone above — every chip is a real effect from the app, simulated here so you can get a feel for the range before you download.</p>
+    </div>
+    <div class="effects-list">
+      <span class="pill">Chromatic Aberration</span>
+      <span class="pill">Halation</span>
+      <span class="pill">Hyper Saturation</span>
+      <span class="pill">Aerochrome</span>
+      <span class="pill">Oil Slick</span>
+      <span class="pill">Solarize</span>
+      <span class="pill">Liquid Chrome</span>
+      <span class="pill">Gradient Maps</span>
+      <span class="pill">Film Grain</span>
+      <span class="pill">Warp</span>
+      <span class="pill">Vortex</span>
+      <span class="pill">Ripple</span>
+      <span class="pill">Fluted Glass</span>
+      <span class="pill">Marble</span>
+      <span class="pill">Zoom Blur</span>
+      <span class="pill">Wireframe Mesh</span>
+      <span class="pill">Light Trails</span>
+      <span class="pill">Beauty — Pink &amp; Glow</span>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Built for shooting, not scrolling through menus</h2>
+      <p>Every effect renders live in the viewfinder at full frame rate, so you compose the shot you actually want — no guessing how a filter will look after the fact.</p>
+    </div>
+    <div class="grid-features">
+      <div class="card">
+        <div class="icon">◐</div>
+        <h3>Live, not a filter</h3>
+        <p>Effects run on the camera feed in real time via Metal, so the viewfinder always matches the final photo or video.</p>
+      </div>
+      <div class="card">
+        <div class="icon">▣</div>
+        <h3>Full-resolution capture</h3>
+        <p>Photos capture at up to 48MP. Video records with effects baked in — no separate export step.</p>
+      </div>
+      <div class="card">
+        <div class="icon">✎</div>
+        <h3>Edit from your library too</h3>
+        <p>Pick an existing photo and run it through the same effects pipeline used for the live camera.</p>
+      </div>
+      <div class="card">
+        <div class="icon">◈</div>
+        <h3>Stack and tune</h3>
+        <p>Layer multiple effects together and dial each one in with a slider — from a whisper to fully liquid.</p>
+      </div>
+      <div class="card">
+        <div class="icon">⬒</div>
+        <h3>Straight to your camera roll</h3>
+        <p>No cloud step, no processing queue. Capture, save, done.</p>
+      </div>
+      <div class="card">
+        <div class="icon">✕</div>
+        <h3>No account required</h3>
+        <p>Open the app and start shooting. Nothing to sign up for, nothing to sync.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="privacy">
+  <div class="wrap">
+    <div class="privacy-strip">
+      <div>
+        <h2>Private by design</h2>
+        <p>
+          Liquid Lens doesn't have a server, an account system, or an
+          analytics SDK — so there's nothing to send your photos to. Everything
+          happens on your device.
+        </p>
+        <a class="btn btn-primary" href="privacy.html">Read the full privacy policy</a>
+      </div>
+      <div class="privacy-facts">
+        <div class="privacy-fact"><span class="check">✓</span> No data collected, ever</div>
+        <div class="privacy-fact"><span class="check">✓</span> No accounts or sign-in</div>
+        <div class="privacy-fact"><span class="check">✓</span> No analytics or tracking</div>
+        <div class="privacy-fact"><span class="check">✓</span> No third-party SDKs</div>
+        <div class="privacy-fact"><span class="check">✓</span> Photos never leave your device unless you share them</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>© 2026 Liquid Lens. Made by Sydney Brynjulfson.</span>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:sydneybrynjulfson1@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
