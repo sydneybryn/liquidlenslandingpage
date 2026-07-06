@@ -8,8 +8,8 @@
   --text: #f4f1ff;
   --text-dim: #bbd8f1;
   --text-dimmer: rgba(187, 216, 241, 0.55);
-  --accent-a: #95cc66;   /* primary accent (green)         */
-  --accent-b: #95cc66;   /* primary accent, alias          */
+  --accent-a: #83e748;   /* primary accent (green)         */
+  --accent-b: #83e748;   /* primary accent, alias          */
   --accent-c: #2300d3;   /* additional accent (blue-violet) */
   --accent-d: #2300d3;   /* additional accent, alias        */
   --radius-lg: 28px;
@@ -38,7 +38,7 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background:
-    radial-gradient(1200px 600px at 15% -10%, rgba(149, 204, 102, 0.16), transparent 60%),
+    radial-gradient(1200px 600px at 15% -10%, rgba(131, 231, 72, 0.16), transparent 60%),
     radial-gradient(1000px 700px at 110% 10%, rgba(35, 0, 211, 0.22), transparent 55%),
     var(--bg);
   color: var(--text);
@@ -235,7 +235,7 @@ h1 .grad {
 .phone-glow {
   position: absolute;
   inset: -50px;
-  background: radial-gradient(closest-side, rgba(149, 204, 102, 0.28), transparent 70%);
+  background: radial-gradient(closest-side, rgba(131, 231, 72, 0.28), transparent 70%);
   filter: blur(12px);
   z-index: 0;
 }
@@ -560,7 +560,7 @@ section { padding: 84px 0; }
   justify-content: center;
   margin-bottom: 16px;
   font-size: 19px;
-  background: linear-gradient(135deg, rgba(149, 204, 102, 0.22), rgba(35, 0, 211, 0.22));
+  background: linear-gradient(135deg, rgba(131, 231, 72, 0.22), rgba(35, 0, 211, 0.22));
   border: 1px solid var(--panel-border);
 }
 
@@ -597,7 +597,7 @@ section { padding: 84px 0; }
 .privacy-strip {
   border-radius: var(--radius-lg);
   border: 1px solid var(--panel-border);
-  background: linear-gradient(135deg, rgba(149, 204, 102, 0.1), rgba(35, 0, 211, 0.12));
+  background: linear-gradient(135deg, rgba(131, 231, 72, 0.1), rgba(35, 0, 211, 0.12));
   padding: 40px;
   display: grid;
   grid-template-columns: 1.2fr 1fr;
