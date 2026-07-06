@@ -592,6 +592,16 @@ section { padding: 84px 0; }
   color: var(--text-dim);
 }
 
+/* ---------- Support ---------- */
+
+.support-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
 /* ---------- Privacy summary strip ---------- */
 
 .privacy-strip {
