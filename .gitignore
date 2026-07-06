@@ -1,1 +1,8 @@
 .DS_Store
+
+# Raw, full-resolution originals (multi-MB device exports). Only the
+# compressed assets/photos/sample-*.jpg and showcase-*.jpg derivatives
+# (referenced by index.html) are meant to be tracked in this repo.
+assets/photos/IMG_*.JPG
+assets/photos/IMG_*.jpeg
+assets/photos/[0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F]-*.jpg

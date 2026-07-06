@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -51,34 +52,90 @@
     <div class="phone-stage">
       <div class="phone-glow"></div>
       <div class="phone">
-        <div class="phone-screen">
+        <div class="phone-screen" id="phoneScreen">
           <div class="island"></div>
 
-          <div class="photo-layer" id="photoLayer">
-            <img src="assets/photos/sample-1.jpg" class="active" alt="Sample photo 1 — Lightner Museum, St. Augustine" />
-            <img src="assets/photos/sample-2.jpg" alt="Sample photo 2 — golden hour clouds" />
-            <img src="assets/photos/sample-3.jpg" alt="Sample photo 3 — looking up at a building facade" />
+          <div class="preview-frame" id="previewFrame">
+            <div class="photo-layer" id="photoLayer">
+              <img src="assets/photos/sample-1.jpg" class="active" alt="Sample photo 1 — Lightner Museum, St. Augustine" />
+              <img src="assets/photos/sample-2.jpg" alt="Sample photo 2 — golden hour clouds" />
+              <img src="assets/photos/sample-3.jpg" alt="Sample photo 3 — looking up at a building facade" />
+            </div>
+            <div class="grain-overlay" id="grainOverlay"></div>
+            <div class="oil-overlay" id="oilOverlay"></div>
+            <div class="grid-overlay" id="gridOverlay"></div>
+            <div class="warp-vignette" id="warpVignette"></div>
           </div>
-          <div class="grain-overlay" id="grainOverlay"></div>
-          <div class="oil-overlay" id="oilOverlay"></div>
+          <div class="capture-flash" id="captureFlash"></div>
 
-          <div class="top-bar">
-            <span class="chip">1×</span>
-            <span class="chip">4:5</span>
+          <!-- top bar: reset · aspect ratio (or REC) · flip camera -->
+          <div class="ui-top-bar">
+            <button class="ui-icon-btn" id="resetBtn" aria-label="Reset effects"><i class="bi bi-arrow-counterclockwise"></i></button>
+            <button class="aspect-bracket" id="aspectBtn" aria-label="Cycle aspect ratio">
+              <span class="bracket left"></span><span id="aspectLabel">5:7</span><span class="bracket right"></span>
+            </button>
+            <div class="rec-indicator" id="recIndicator" hidden><span class="rec-dot"></span>REC</div>
+            <button class="ui-icon-btn" id="flipBtn" aria-label="Flip camera"><i class="bi bi-arrow-repeat"></i></button>
           </div>
 
-          <div class="dots" id="dots">
-            <button class="active" data-photo="0" aria-label="Sample photo 1"></button>
-            <button data-photo="1" aria-label="Sample photo 2"></button>
-            <button data-photo="2" aria-label="Sample photo 3"></button>
+          <!-- bottom deck: flash / fx / shutter / warp / colors, then thumbnail / mode / lens -->
+          <div class="ui-bottom-deck">
+            <div class="deck-row deck-row-main">
+              <button class="tool-square" id="flashBtn" aria-label="Flash">
+                <span class="tool-icon"><i class="bi bi-lightning-charge"></i></span>
+                <span class="tool-label">Flash</span>
+              </button>
+              <button class="tool-square" id="fxBtn" aria-label="FX effects">
+                <span class="tool-icon"><i class="bi bi-stars"></i></span>
+                <span class="tool-label">FX</span>
+              </button>
+              <button class="shutter-btn" id="shutterBtn" aria-label="Capture">
+                <span class="shutter-ring"><span class="shutter-inner" id="shutterInner"></span></span>
+              </button>
+              <button class="tool-square" id="warpBtn" aria-label="Warp">
+                <span class="tool-icon"><i class="bi bi-arrows-angle-expand"></i></span>
+                <span class="tool-label" id="warpLabel">Warp</span>
+              </button>
+              <button class="tool-square" id="colorsBtn" aria-label="Color effects">
+                <span class="tool-icon rgb-mark-wrap">
+                  <span class="rgb-mark" aria-hidden="true">
+                    <span class="dot r"></span><span class="dot b"></span><span class="dot g"></span>
+                  </span>
+                </span>
+                <span class="tool-label">Colors</span>
+              </button>
+            </div>
+            <div class="deck-row deck-row-lower">
+              <button class="thumb-btn" id="thumbBtn" disabled aria-label="Last capture"><i class="bi bi-image"></i></button>
+              <div class="mode-labels">
+                <button class="mode-label active" id="photoModeBtn">PHOTO</button>
+                <button class="mode-label" id="videoModeBtn">VIDEO</button>
+                <span class="edit-wrap">
+                  <button class="mode-label edit-label" id="editModeBtn">EDIT</button>
+                  <span class="edit-tooltip" id="editTooltip">Opens your Photos library</span>
+                </span>
+              </div>
+              <button class="lens-btn" id="lensBtn">1×</button>
+            </div>
           </div>
 
-          <button class="nav-arrow prev" id="prevPhoto" aria-label="Previous sample photo">‹</button>
-          <button class="nav-arrow next" id="nextPhoto" aria-label="Next sample photo">›</button>
-
-          <div class="bottom-bar">
-            <p class="effect-label" id="effectLabel">Original <span>— tap an effect below</span></p>
-            <div class="chip-row" id="chipRow"></div>
+          <!-- effects drawer: header (name / reset / done) → slider → tile row -->
+          <div class="effects-drawer" id="effectsDrawer" hidden>
+            <div class="drawer-handle"></div>
+            <div class="drawer-header">
+              <span class="drawer-effect-name" id="drawerEffectName">CA</span>
+              <div class="drawer-header-btns">
+                <button class="drawer-icon-btn" id="drawerResetBtn" aria-label="Reset this effect"><i class="bi bi-arrow-counterclockwise"></i></button>
+                <button class="drawer-icon-btn" id="drawerDoneBtn" aria-label="Close drawer"><i class="bi bi-check-lg"></i></button>
+              </div>
+            </div>
+            <div class="drawer-slider-row">
+              <button class="drawer-mini-btn" id="gridToggleBtn" hidden aria-label="Toggle mesh grid"><i class="bi bi-grid-3x3"></i></button>
+              <button class="drawer-palette-btn" id="paletteBtn" hidden>Sunset</button>
+              <input type="range" id="effectSlider" min="0" max="100" value="0" aria-label="Effect intensity" />
+              <span class="drawer-value" id="drawerValue">0</span>
+            </div>
+            <div class="drawer-tiles" id="drawerTiles"></div>
           </div>
         </div>
       </div>
@@ -89,28 +146,57 @@
 <section id="effects">
   <div class="wrap">
     <div class="section-head">
-      <h2>One tap, a whole new roll of film</h2>
-      <p>Tap through the phone above — every chip is a real effect from the app, simulated here so you can get a feel for the range before you download.</p>
+      <h2>This is the actual app UI</h2>
+      <p>
+        Reset · aspect ratio · flip camera up top. Flash, FX, shutter, Warp,
+        and Colors on the deck. Tap FX or Colors to open the drawer, tap a
+        tile to select it, then drag the slider to bring it in — exactly how
+        it works on your phone. Effect looks are approximated with CSS here;
+        the real app renders them live with custom Metal shaders.
+      </p>
     </div>
     <div class="effects-list">
-      <span class="pill">Chromatic Aberration</span>
+      <span class="pill">CA</span>
       <span class="pill">Halation</span>
-      <span class="pill">Hyper Saturation</span>
-      <span class="pill">Aerochrome</span>
-      <span class="pill">Oil Slick</span>
-      <span class="pill">Solarize</span>
-      <span class="pill">Liquid Chrome</span>
-      <span class="pill">Gradient Maps</span>
-      <span class="pill">Film Grain</span>
-      <span class="pill">Warp</span>
-      <span class="pill">Vortex</span>
+      <span class="pill">Hyper</span>
+      <span class="pill">Pink</span>
+      <span class="pill">Glow</span>
+      <span class="pill">Crush</span>
+      <span class="pill">Oil</span>
+      <span class="pill">Chrome</span>
+      <span class="pill">Infra</span>
+      <span class="pill">Solar</span>
+      <span class="pill">Grad</span>
+      <span class="pill">Grain</span>
+      <span class="pill">Sharpen</span>
+      <span class="pill">Zoom</span>
+      <span class="pill">Mesh</span>
+      <span class="pill">Emboss</span>
+      <span class="pill">Polar</span>
+      <span class="pill">Trails</span>
       <span class="pill">Ripple</span>
-      <span class="pill">Fluted Glass</span>
+      <span class="pill">Fluted</span>
       <span class="pill">Marble</span>
-      <span class="pill">Zoom Blur</span>
-      <span class="pill">Wireframe Mesh</span>
-      <span class="pill">Light Trails</span>
-      <span class="pill">Beauty — Pink &amp; Glow</span>
+    </div>
+  </div>
+</section>
+
+<section id="showcase">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Shot with Liquid Lens</h2>
+      <p>Real output from the app — no CSS approximation here, this is what actually comes out the other end.</p>
+    </div>
+    <div class="showcase-strip">
+      <img src="assets/photos/showcase-1.jpg" alt="Liquid Lens sample: chromatic aberration and warp on a car wash bay" loading="lazy" />
+      <img src="assets/photos/showcase-2.jpg" alt="Liquid Lens sample: roadside ice cream sign, glitch color effect" loading="lazy" />
+      <img src="assets/photos/showcase-3.jpg" alt="Liquid Lens sample: white fence path under a pink sunset sky" loading="lazy" />
+      <img src="assets/photos/showcase-4.jpg" alt="Liquid Lens sample: night city street with chromatic aberration" loading="lazy" />
+      <img src="assets/photos/showcase-5.jpg" alt="Liquid Lens sample: fisheye warp on a tree, purple sky" loading="lazy" />
+      <img src="assets/photos/showcase-6.jpg" alt="Liquid Lens sample: tree silhouette against an orange sunset" loading="lazy" />
+      <img src="assets/photos/showcase-7.jpg" alt="Liquid Lens sample: abstract light burst effect" loading="lazy" />
+      <img src="assets/photos/showcase-8.jpg" alt="Liquid Lens sample: neon-lit window blinds" loading="lazy" />
+      <img src="assets/photos/showcase-9.jpg" alt="Liquid Lens sample: liquid marble color abstraction" loading="lazy" />
     </div>
   </div>
 </section>
