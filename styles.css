@@ -728,7 +728,7 @@ footer {
 
 @media (max-width: 880px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .phone-stage { order: -1; margin-bottom: 12px; }
+  .phone-stage { margin-top: 12px; }
   .lede { max-width: none; }
   .grid-features { grid-template-columns: 1fr; }
   .privacy-strip { grid-template-columns: 1fr; padding: 28px; }
