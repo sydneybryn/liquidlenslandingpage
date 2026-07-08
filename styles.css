@@ -265,9 +265,6 @@ h1 .grad {
 
 .phone-screen {
   position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
   width: 100%;
   height: 100%;
   border-radius: 44px;
@@ -289,15 +286,12 @@ h1 .grad {
   z-index: 6;
 }
 
-/* -- camera preview: aspect-ratio boxed + letterboxed, like the real app -- */
+/* -- camera preview: full-bleed behind the UI overlays, like the real app -- */
 
 .preview-frame {
-  position: relative;
-  flex: 0 0 auto;
-  width: 100%;
-  aspect-ratio: 9 / 16;
+  position: absolute;
+  inset: 0;
   overflow: hidden;
-  margin-top: 112px;
 }
 
 .photo-layer { position: absolute; inset: 0; }
