@@ -286,11 +286,16 @@ h1 .grad {
   z-index: 6;
 }
 
-/* -- camera preview: full-bleed behind the UI overlays, like the real app -- */
+/* -- camera preview: 9:16 image anchored to the bottom, with a black
+   letterbox bar at the top where the reset/aspect/flip controls sit.
+   The image extends down behind the bottom shutter row, like the real app. -- */
 
 .preview-frame {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  aspect-ratio: 9 / 16;
   overflow: hidden;
 }
 
