@@ -286,6 +286,19 @@ h1 .grad {
   z-index: 6;
 }
 
+/* Green "camera active" status dot, centered just above the top control bar. */
+.status-dot {
+  position: absolute;
+  top: 38px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34c759;
+  z-index: 6;
+}
+
 /* -- camera preview: 9:16 image anchored to the bottom, with a black
    letterbox bar at the top where the reset/aspect/flip controls sit.
    The image extends down behind the bottom shutter row, like the real app. -- */
