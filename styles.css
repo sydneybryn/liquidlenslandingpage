@@ -383,7 +383,10 @@ h1 .grad {
   right: 0;
   bottom: 0;
   z-index: 5;
-  background: var(--dc-chrome);
+  /* Transparent so the full-bleed photo shows through behind the shutter
+     row, exactly like the real app. Only the lower mode strip gets a solid
+     black background (see .deck-row-lower). */
+  background: transparent;
 }
 
 .deck-row { display: flex; align-items: center; }
@@ -464,6 +467,7 @@ h1 .grad {
 .deck-row-lower {
   justify-content: space-between;
   padding: 12px 22px 13px;
+  background: var(--dc-chrome);
 }
 
 .thumb-btn {
