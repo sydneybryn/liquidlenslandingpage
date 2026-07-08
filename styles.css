@@ -286,11 +286,13 @@ h1 .grad {
   z-index: 6;
 }
 
-/* Green "camera active" status dot, centered just above the top control bar. */
+/* Green "camera active" status dot, just above the top control bar.
+   In the real app it sits slightly right of center (edge of the island),
+   at ~3.6% of the screen height. */
 .status-dot {
   position: absolute;
-  top: 38px;
-  left: 50%;
+  top: 3.1%;
+  left: 55%;
   transform: translateX(-50%);
   width: 8px;
   height: 8px;
@@ -307,7 +309,9 @@ h1 .grad {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
+  /* The photo's top edge sits 10.5% down the screen in the real app —
+     everything above it is the black control bar. */
+  top: 10.5%;
   aspect-ratio: 9 / 16;
   overflow: hidden;
 }
@@ -352,7 +356,8 @@ h1 .grad {
 
 .ui-top-bar {
   position: absolute;
-  top: 56px;
+  /* Row center lands at ~7.3% of screen height, matching the app. */
+  top: 4.8%;
   left: 0;
   right: 0;
   z-index: 5;
@@ -484,7 +489,9 @@ h1 .grad {
 
 .deck-row-lower {
   justify-content: space-between;
-  padding: 12px 22px 13px;
+  /* Tall enough that the strip's top edge meets the 9:16 photo's bottom
+     edge — the photo never shows below the mode strip in the real app. */
+  padding: 20px 22px 21px;
   background: var(--dc-chrome);
 }
 
