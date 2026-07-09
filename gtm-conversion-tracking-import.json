@@ -1,0 +1,250 @@
+{
+  "exportFormatVersion": 2,
+  "exportTime": "2026-07-09 00:00:00",
+  "containerVersion": {
+    "path": "accounts/0000000000/containers/0000000000/versions/0",
+    "accountId": "0000000000",
+    "containerId": "0000000000",
+    "containerVersionId": "0",
+    "container": {
+      "path": "accounts/0000000000/containers/0000000000",
+      "accountId": "0000000000",
+      "containerId": "0000000000",
+      "name": "Liquid Lens Landing Page",
+      "publicId": "GTM-N8SQ8F23",
+      "usageContext": ["WEB"],
+      "fingerprint": "0",
+      "tagManagerUrl": ""
+    },
+    "tag": [
+      {
+        "accountId": "0000000000",
+        "containerId": "0000000000",
+        "tagId": "101",
+        "name": "GA4 Event - App Store Click Nav",
+        "type": "gaawe",
+        "parameter": [
+          { "type": "BOOLEAN", "key": "sendEcommerceData", "value": "false" },
+          { "type": "TEMPLATE", "key": "eventName", "value": "app_store_click" },
+          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "REPLACE_WITH_YOUR_GA4_CONFIG_TAG_NAME" },
+          { "type": "LIST", "key": "eventParameters", "list": [
+              { "type": "MAP", "map": [
+                  { "type": "TEMPLATE", "key": "parameter", "value": "link_location" },
+                  { "type": "TEMPLATE", "key": "parameterValue", "value": "nav" }
+              ]}
+          ]}
+        ],
+        "firingTriggerId": ["201"],
+        "tagFiringOption": "ONCE_PER_EVENT"
+      },
+      {
+        "accountId": "0000000000",
+        "containerId": "0000000000",
+        "tagId": "102",
+        "name": "GA4 Event - App Store Click Hero",
+        "type": "gaawe",
+        "parameter": [
+          { "type": "BOOLEAN", "key": "sendEcommerceData", "value": "false" },
+          { "type": "TEMPLATE", "key": "eventName", "value": "app_store_click" },
+          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "REPLACE_WITH_YOUR_GA4_CONFIG_TAG_NAME" },
+          { "type": "LIST", "key": "eventParameters", "list": [
+              { "type": "MAP", "map": [
+                  { "type": "TEMPLATE", "key": "parameter", "value": "link_location" },
+                  { "type": "TEMPLATE", "key": "parameterValue", "value": "hero" }
+              ]}
+          ]}
+        ],
+        "firingTriggerId": ["202"],
+        "tagFiringOption": "ONCE_PER_EVENT"
+      },
+      {
+        "accountId": "0000000000",
+        "containerId": "0000000000",
+        "tagId": "103",
+        "name": "GA4 Event - Scroll Depth",
+        "type": "gaawe",
+        "parameter": [
+          { "type": "BOOLEAN", "key": "sendEcommerceData", "value": "false" },
+          { "type": "TEMPLATE", "key": "eventName", "value": "scroll_depth" },
+          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "REPLACE_WITH_YOUR_GA4_CONFIG_TAG_NAME" },
+          { "type": "LIST", "key": "eventParameters", "list": [
+              { "type": "MAP", "map": [
+                  { "type": "TEMPLATE", "key": "parameter", "value": "percent_scrolled" },
+                  { "type": "TEMPLATE", "key": "parameterValue", "value": "{{Scroll Depth Threshold}}" }
+              ]}
+          ]}
+        ],
+        "firingTriggerId": ["203"],
+        "tagFiringOption": "ONCE_PER_EVENT"
+      },
+      {
+        "accountId": "0000000000",
+        "containerId": "0000000000",
+        "tagId": "104",
+        "name": "GA4 Event - Outbound Instagram",
+        "type": "gaawe",
+        "parameter": [
+          { "type": "BOOLEAN", "key": "sendEcommerceData", "value": "false" },
+          { "type": "TEMPLATE", "key": "eventName", "value": "outbound_click" },
+          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "REPLACE_WITH_YOUR_GA4_CONFIG_TAG_NAME" },
+          { "type": "LIST", "key": "eventParameters", "list": [
+              { "type": "MAP", "map": [
+                  { "type": "TEMPLATE", "key": "parameter", "value": "link_url" },
+                  { "type": "TEMPLATE", "key": "parameterValue", "value": "{{Click URL}}" }
+              ]},
+              { "type": "MAP", "map": [
+                  { "type": "TEMPLATE", "key": "parameter", "value": "link_domain" },
+                  { "type": "TEMPLATE", "key": "parameterValue", "value": "instagram.com" }
+              ]}
+          ]}
+        ],
+        "firingTriggerId": ["204"],
+        "tagFiringOption": "ONCE_PER_EVENT"
+      },
+      {
+        "accountId": "0000000000",
+        "containerId": "0000000000",
+        "tagId": "105",
+        "name": "GA4 Event - Mailto Click",
+        "type": "gaawe",
+        "parameter": [
+          { "type": "BOOLEAN", "key": "sendEcommerceData", "value": "false" },
+          { "type": "TEMPLATE", "key": "eventName", "value": "contact_click" },
+          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "REPLACE_WITH_YOUR_GA4_CONFIG_TAG_NAME" },
+          { "type": "LIST", "key": "eventParameters", "list": [
+              { "type": "MAP", "map": [
+                  { "type": "TEMPLATE", "key": "parameter", "value": "contact_method" },
+                  { "type": "TEMPLATE", "key": "parameterValue", "value": "email" }
+              ]}
+          ]}
+        ],
+        "firingTriggerId": ["205"],
+        "tagFiringOption": "ONCE_PER_EVENT"
+      },
+      {
+        "accountId": "0000000000",
+        "containerId": "0000000000",
+        "tagId": "106",
+        "name": "GA4 Event - Anchor CTA Click",
+        "type": "gaawe",
+        "parameter": [
+          { "type": "BOOLEAN", "key": "sendEcommerceData", "value": "false" },
+          { "type": "TEMPLATE", "key": "eventName", "value": "cta_click" },
+          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "REPLACE_WITH_YOUR_GA4_CONFIG_TAG_NAME" },
+          { "type": "LIST", "key": "eventParameters", "list": [
+              { "type": "MAP", "map": [
+                  { "type": "TEMPLATE", "key": "parameter", "value": "cta_target" },
+                  { "type": "TEMPLATE", "key": "parameterValue", "value": "{{Click URL}}" }
+              ]}
+          ]}
+        ],
+        "firingTriggerId": ["206"],
+        "tagFiringOption": "ONCE_PER_EVENT"
+      }
+    ],
+    "trigger": [
+      {
+        "accountId": "0000000000",
+        "containerId": "0000000000",
+        "triggerId": "201",
+        "name": "App Store Click - Nav",
+        "type": "LINK_CLICK",
+        "waitForTags": { "type": "BOOLEAN", "value": "true" },
+        "checkValidation": { "type": "BOOLEAN", "value": "true" },
+        "waitForTagsTimeout": { "type": "TEMPLATE", "value": "2000" },
+        "filter": [
+          { "type": "EQUALS", "parameter": [
+              { "type": "TEMPLATE", "key": "arg0", "value": "{{Click ID}}" },
+              { "type": "TEMPLATE", "key": "arg1", "value": "appstore-nav" }
+          ]}
+        ]
+      },
+      {
+        "accountId": "0000000000",
+        "containerId": "0000000000",
+        "triggerId": "202",
+        "name": "App Store Click - Hero",
+        "type": "LINK_CLICK",
+        "waitForTags": { "type": "BOOLEAN", "value": "true" },
+        "checkValidation": { "type": "BOOLEAN", "value": "true" },
+        "waitForTagsTimeout": { "type": "TEMPLATE", "value": "2000" },
+        "filter": [
+          { "type": "EQUALS", "parameter": [
+              { "type": "TEMPLATE", "key": "arg0", "value": "{{Click ID}}" },
+              { "type": "TEMPLATE", "key": "arg1", "value": "appstore-hero" }
+          ]}
+        ]
+      },
+      {
+        "accountId": "0000000000",
+        "containerId": "0000000000",
+        "triggerId": "203",
+        "name": "Scroll Depth - Landing",
+        "type": "SCROLL_DEPTH",
+        "parameter": [
+          { "type": "BOOLEAN", "key": "verticalThresholdsPercent", "value": "true" },
+          { "type": "TEMPLATE", "key": "verticalThresholdsPercentList", "value": "25,50,75,90" }
+        ],
+        "filter": [
+          { "type": "CONTAINS", "parameter": [
+              { "type": "TEMPLATE", "key": "arg0", "value": "{{Page Path}}" },
+              { "type": "TEMPLATE", "key": "arg1", "value": "index.html" }
+          ]}
+        ],
+        "notes": "If your production URL serves index.html at the bare root path (e.g. https://yourdomain.com/ with no /index.html in the path), change this filter to Page Path EQUALS / instead of CONTAINS index.html."
+      },
+      {
+        "accountId": "0000000000",
+        "containerId": "0000000000",
+        "triggerId": "204",
+        "name": "Outbound Click - Instagram",
+        "type": "LINK_CLICK",
+        "filter": [
+          { "type": "CONTAINS", "parameter": [
+              { "type": "TEMPLATE", "key": "arg0", "value": "{{Click URL}}" },
+              { "type": "TEMPLATE", "key": "arg1", "value": "instagram.com" }
+          ]}
+        ]
+      },
+      {
+        "accountId": "0000000000",
+        "containerId": "0000000000",
+        "triggerId": "205",
+        "name": "Mailto Click",
+        "type": "LINK_CLICK",
+        "filter": [
+          { "type": "CONTAINS", "parameter": [
+              { "type": "TEMPLATE", "key": "arg0", "value": "{{Click URL}}" },
+              { "type": "TEMPLATE", "key": "arg1", "value": "mailto:" }
+          ]}
+        ]
+      },
+      {
+        "accountId": "0000000000",
+        "containerId": "0000000000",
+        "triggerId": "206",
+        "name": "Anchor CTA Click",
+        "type": "LINK_CLICK",
+        "filter": [
+          { "type": "MATCH_REGEX", "parameter": [
+              { "type": "TEMPLATE", "key": "arg0", "value": "{{Click URL}}" },
+              { "type": "TEMPLATE", "key": "arg1", "value": "#effects$|#features$" }
+          ]}
+        ]
+      }
+    ],
+    "variable": [],
+    "builtInVariable": [
+      { "type": "CLICK_URL", "name": "Click URL" },
+      { "type": "CLICK_ID", "name": "Click ID" },
+      { "type": "CLICK_CLASSES", "name": "Click Classes" },
+      { "type": "CLICK_ELEMENT", "name": "Click Element" },
+      { "type": "SCROLL_DEPTH_THRESHOLD", "name": "Scroll Depth Threshold" },
+      { "type": "SCROLL_DEPTH_UNITS", "name": "Scroll Depth Units" },
+      { "type": "PAGE_URL", "name": "Page URL" },
+      { "type": "PAGE_PATH", "name": "Page Path" }
+    ],
+    "fingerprint": "0",
+    "tagManagerUrl": ""
+  }
+}
